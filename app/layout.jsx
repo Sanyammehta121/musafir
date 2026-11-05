@@ -3,9 +3,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'LocalLore – AI Local Tourism Guide & Hidden Gems Itinerary Planner',
+  title: 'MUSAFIR – Be a traveler, not a guest | AI Local Tourism Guide',
   description:
-    'Discover authentic hidden gems, century-old artisan workshops, traditional food, and cultural lore for any town or village. Powered by Google Gemini 2.5 Flash & OpenStreetMap.',
+    'MUSAFIR: Be a traveler, not a guest. Discover authentic hidden gems, century-old artisan workshops, traditional food, and cultural lore for any town or village. Powered by Google Gemini 2.5 Flash & OpenStreetMap.',
   keywords: [
     'local tourism',
     'hidden gems',

@@ -36,7 +36,7 @@ export default function SkeletonLoader({ destination = "your destination" }) {
 
         <div className="mt-3 flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-terracotta-800 transition-all duration-500">
           <Sparkles className="w-4 h-4 text-saffron-500 animate-pulse" />
-          <span className="italic">{LOCAL_LORE_WISDOM[quoteIndex]}</span>
+          <span className="italic">MUSAFIR · "{LOCAL_LORE_WISDOM[quoteIndex]}"</span>
         </div>
 
         <div className="mt-5 w-48 h-1.5 bg-terracotta-200/80 rounded-full mx-auto overflow-hidden">

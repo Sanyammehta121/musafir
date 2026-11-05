@@ -8,10 +8,10 @@ export default function Hero() {
       <div className="absolute top-20 left-10 w-72 h-72 bg-saffron-400/20 rounded-full blur-3xl pointer-events-none -z-0" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        {/* Theme pill */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur border border-terracotta-200 shadow-sm text-xs font-semibold text-terracotta-800 mb-6">
-          <Sparkles className="w-3.5 h-3.5 text-terracotta-600" />
-          <span>Explore Local: Escape the Tourist Traps</span>
+        {/* Tagline Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur border border-terracotta-200 shadow-sm text-xs sm:text-sm font-semibold text-terracotta-800 mb-6">
+          <Sparkles className="w-4 h-4 text-terracotta-600" />
+          <span className="italic">Be a traveler, not a guest</span>
         </div>
 
         {/* Main Headline */}
@@ -24,9 +24,7 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p className="mt-5 text-base sm:text-lg lg:text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
-          Standard guidebooks push tourists to the same crowded checkpoints. LocalLore reveals
-          secluded stepwells, centuries-old family kitchens, quiet weaver looms, and the forgotten
-          cultural lore of any destination.
+          Standard guidebooks push tourists to the same crowded checkpoints. <strong className="font-semibold text-stone-900">MUSAFIR</strong> invites you to step beyond commercial checkpoints—discovering secluded stepwells, centuries-old family kitchens, quiet weaver looms, and timeless cultural lore.
         </p>
 
         {/* Value Prop Badges */}

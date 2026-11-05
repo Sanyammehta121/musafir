@@ -13,7 +13,7 @@ export default function HomePage() {
   const [formData, setFormData] = useState({
     destination: '',
     duration: '1 Day',
-    budget: 'Medium',
+    budget: '₹2,500',
     interests: ['History', 'Food', 'Crafts/Markets'],
     groupType: 'Solo',
     preferHiddenGems: true,

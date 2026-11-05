@@ -11,11 +11,11 @@ export default function Footer() {
               <Compass className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-serif text-lg font-bold text-white tracking-tight">
-                Local<span className="text-terracotta-400">Lore</span>
+              <span className="font-serif text-lg font-bold text-white tracking-wider">
+                MUSA<span className="text-terracotta-400">FIR</span>
               </span>
-              <p className="text-xs text-stone-400">
-                AI Local Tourism Guide · Uncovering Hidden Cultural Gems
+              <p className="text-xs text-stone-400 italic">
+                Be a traveler, not a guest
               </p>
             </div>
           </div>

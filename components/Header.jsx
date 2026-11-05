@@ -33,15 +33,15 @@ export default function Header() {
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-serif text-xl font-bold tracking-tight text-stone-900">
-                Local<span className="text-terracotta-600">Lore</span>
+              <span className="font-serif text-xl font-bold tracking-wider text-stone-900">
+                MUSA<span className="text-terracotta-600">FIR</span>
               </span>
               <span className="text-[10px] font-semibold tracking-wider uppercase px-1.5 py-0.5 rounded bg-terracotta-100 text-terracotta-800 border border-terracotta-200">
                 AI Guide
               </span>
             </div>
-            <p className="text-[11px] text-stone-500 hidden sm:block">
-              Hidden gems & cultural itineraries for any town
+            <p className="text-[11px] text-stone-500 hidden sm:block italic">
+              Be a traveler, not a guest
             </p>
           </div>
         </Link>

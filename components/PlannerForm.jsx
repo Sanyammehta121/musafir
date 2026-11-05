@@ -10,7 +10,8 @@ import {
   Sparkles,
   Search,
   Gem,
-  Check
+  Check,
+  IndianRupee
 } from 'lucide-react';
 
 const INTEREST_OPTIONS = [
@@ -24,7 +25,7 @@ const INTEREST_OPTIONS = [
   { id: 'Festivals', label: 'Festivals & Lore', icon: '🎉' },
 ];
 
-const DURATION_OPTIONS = [
+const QUICK_DURATIONS = [
   '4 Hours',
   '8 Hours',
   '1 Day',
@@ -32,10 +33,10 @@ const DURATION_OPTIONS = [
   '3 Days',
 ];
 
-const BUDGET_OPTIONS = [
-  { id: 'Low', label: 'Low', symbol: '₹', desc: 'Street food, local buses & free heritage' },
-  { id: 'Medium', label: 'Medium', symbol: '₹₹', desc: 'Auto-rickshaws, traditional thalis & workshops' },
-  { id: 'High', label: 'High', symbol: '₹₹₹', desc: 'Private cabs, boutique dining & heritage stays' },
+const QUICK_BUDGETS = [
+  { label: '₹800 (Low)', val: '₹800' },
+  { label: '₹2,500 (Med)', val: '₹2,500' },
+  { label: '₹6,000 (High)', val: '₹6,000' },
 ];
 
 const GROUP_OPTIONS = [
@@ -79,7 +80,7 @@ export default function PlannerForm({
             </div>
             <div>
               <h2 className="font-serif text-lg sm:text-xl font-bold">Personalize Your Exploration</h2>
-              <p className="text-xs text-stone-300">Tell us where you are heading and how you like to explore</p>
+              <p className="text-xs text-stone-300">Be a traveler, not a guest — tailor your journey</p>
             </div>
           </div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-xs text-stone-200 backdrop-blur-xs">
@@ -112,24 +113,35 @@ export default function PlannerForm({
             </p>
           </div>
 
-          {/* Grid: Duration, Budget, Group */}
+          {/* Grid: Variable Duration, Variable Budget, Group */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Duration */}
+            {/* Variable Duration / Time */}
             <div>
               <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-terracotta-600" />
-                Available Time
+                Available Time (Input Any Duration)
               </label>
-              <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
-                {DURATION_OPTIONS.map((dur) => (
+              <div className="relative mb-2">
+                <input
+                  type="text"
+                  required
+                  value={formData.duration}
+                  onChange={(e) => setFormData(prev => ({ ...prev, duration: e.target.value }))}
+                  placeholder="e.g. 5 Hours, 3 Days, 1.5 Days"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-sand-50/70 border border-stone-300 text-stone-900 placeholder-stone-400 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-terracotta-500 transition-all"
+                />
+              </div>
+              {/* Quick Presets */}
+              <div className="flex flex-wrap gap-1">
+                {QUICK_DURATIONS.map((dur) => (
                   <button
                     key={dur}
                     type="button"
                     onClick={() => setFormData(prev => ({ ...prev, duration: dur }))}
-                    className={`py-2 px-2 text-xs font-medium rounded-xl border text-center transition-all ${
+                    className={`py-1 px-2 text-[11px] font-medium rounded-lg border text-center transition-all ${
                       formData.duration === dur
-                        ? 'bg-terracotta-600 border-terracotta-600 text-white shadow-xs font-semibold'
-                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300 hover:bg-stone-50'
+                        ? 'bg-terracotta-600 border-terracotta-600 text-white font-semibold shadow-xs'
+                        : 'bg-white border-stone-200 text-stone-600 hover:border-stone-300 hover:bg-stone-50'
                     }`}
                   >
                     {dur}
@@ -138,26 +150,39 @@ export default function PlannerForm({
               </div>
             </div>
 
-            {/* Budget */}
+            {/* Variable Budget */}
             <div>
               <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                 <Wallet className="w-4 h-4 text-terracotta-600" />
-                Budget Tier
+                Estimated Budget (Input in INR)
               </label>
-              <div className="grid grid-cols-3 gap-1.5">
-                {BUDGET_OPTIONS.map((b) => (
+              <div className="relative mb-2">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-400">
+                  <span className="font-bold text-stone-600 text-sm">₹</span>
+                </div>
+                <input
+                  type="text"
+                  required
+                  value={formData.budget}
+                  onChange={(e) => setFormData(prev => ({ ...prev, budget: e.target.value }))}
+                  placeholder="e.g. 1500, 3000, 10000"
+                  className="w-full pl-8 pr-3.5 py-2.5 rounded-xl bg-sand-50/70 border border-stone-300 text-stone-900 placeholder-stone-400 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-terracotta-500 transition-all"
+                />
+              </div>
+              {/* Quick Presets */}
+              <div className="flex flex-wrap gap-1">
+                {QUICK_BUDGETS.map((b) => (
                   <button
-                    key={b.id}
+                    key={b.val}
                     type="button"
-                    onClick={() => setFormData(prev => ({ ...prev, budget: b.id }))}
-                    className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center justify-center ${
-                      formData.budget === b.id
-                        ? 'bg-terracotta-50 border-terracotta-600 text-terracotta-900 shadow-xs ring-1 ring-terracotta-600'
-                        : 'bg-white border-stone-200 text-stone-700 hover:border-stone-300 hover:bg-stone-50'
+                    onClick={() => setFormData(prev => ({ ...prev, budget: b.val }))}
+                    className={`py-1 px-2 text-[11px] font-medium rounded-lg border text-center transition-all ${
+                      formData.budget === b.val
+                        ? 'bg-terracotta-600 border-terracotta-600 text-white font-semibold shadow-xs'
+                        : 'bg-white border-stone-200 text-stone-600 hover:border-stone-300 hover:bg-stone-50'
                     }`}
                   >
-                    <span className="font-bold text-xs">{b.label}</span>
-                    <span className="text-[10px] text-stone-500 mt-0.5">{b.symbol}</span>
+                    {b.label}
                   </button>
                 ))}
               </div>
@@ -169,7 +194,7 @@ export default function PlannerForm({
                 <Users className="w-4 h-4 text-terracotta-600" />
                 Who is Traveling?
               </label>
-              <div className="grid grid-cols-3 gap-1.5">
+              <div className="grid grid-cols-3 gap-1.5 pt-0.5">
                 {GROUP_OPTIONS.map((grp) => (
                   <button
                     key={grp.id}

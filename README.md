@@ -1,5 +1,6 @@
-# LocalLore 🧭 – AI Local Tourism Guide
+# MUSAFIR 🧭 – Be a traveler, not a guest
 
+> **Tagline**: *"Be a traveler, not a guest"*  
 > **Theme**: Explore Local  
 > **Tech Stack**: Next.js 14 (App Router) + Tailwind CSS + Google Gemini 2.5 Flash + Leaflet / OpenStreetMap  
 > **Zero Database Required** · **Zero Map API Key Required**
@@ -10,7 +11,7 @@
 Mass-market tourism channels crowds into the same 3–4 famous checkpoints in every city. Meanwhile, authentic century-old family kitchens, secluded stepwells, indigenous handloom weavers, clay potters, and rich neighborhood cultural lore remain undiscovered. Planning an authentic local trip requires scouring dozens of scattered blogs, blogs with outdated information, and tourist-trap recommendations.
 
 ## 💡 Solution
-**LocalLore** is a hyper-localized, factuality-grounded AI tourism guide. By pairing **Google Gemini 2.5 Flash** with strict verifiability rules and **Leaflet + OpenStreetMap**, LocalLore generates step-by-step timed itineraries specifically highlighting real hidden gems, regional food spots, direct-to-artisan guilds, and cultural etiquette for any town, city, or village.
+**MUSAFIR** is a hyper-localized, factuality-grounded AI tourism guide with a simple philosophy: *"Be a traveler, not a guest"*. By pairing **Google Gemini 2.5 Flash** with strict verifiability rules and **Leaflet + OpenStreetMap**, MUSAFIR generates step-by-step timed itineraries specifically highlighting real hidden gems, regional food spots, direct-to-artisan guilds, and cultural etiquette for any town, city, or village.
 
 ---
 
@@ -18,8 +19,8 @@ Mass-market tourism channels crowds into the same 3–4 famous checkpoints in ev
 
 1. **Intelligent Local Trip Planner**:
    - Destination: Any city, town, or village across the globe.
-   - Flexible duration (4h, 8h, 1 day, 2 days, 3 days).
-   - Budget tiers in realistic Indian Rupees (INR).
+   - **Variable Available Time**: Input any custom hours or days (e.g., 5 Hours, 3 Days) or choose quick presets.
+   - **Variable Budget in INR**: Input your exact target budget in ₹ (e.g., ₹1,500, ₹4,000) or choose quick tiers.
    - Multi-interest tags (History, Food, Nature, Spiritual, Crafts/Markets, Photography, Adventure, Festivals).
    - Solo / Family / Friends group adaptations.
    - Dedicated toggle: *"Prefer hidden gems over famous spots"*.
