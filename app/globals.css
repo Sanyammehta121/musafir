@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --background: #FAF7F2;
+  --foreground: #221D1A;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom leaflet marker styling */
+.custom-leaflet-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #D95C38;
+  color: #FFFFFF;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border: 2px solid #FFFFFF;
+}
+
+.custom-leaflet-marker.gem {
+  background: #2C5E43;
+}
+
+/* Print Stylesheet for PDF/Print export */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 11pt;
+  }
+
+  /* Hide interactive elements, navbar, footer, buttons, chat */
+  header,
+  footer,
+  .no-print,
+  #ask-guide-chat,
+  #quick-start-chips,
+  #how-it-works-section,
+  #planner-form-section,
+  button,
+  .leaflet-control-container {
+    display: none !important;
+  }
+
+  /* Expand itinerary to full page cleanly */
+  #itinerary-print-area {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .timeline-card {
+    page-break-inside: avoid;
+    border: 1px solid #E5E7EB !important;
+    box-shadow: none !important;
+    margin-bottom: 1rem !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000000 !important;
+  }
+}
