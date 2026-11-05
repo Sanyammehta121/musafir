@@ -133,7 +133,7 @@ export default function Header() {
             </button>
 
             {langDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-36 rounded-2xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 shadow-xl py-1.5 z-50 animate-fadeIn">
+              <div className="absolute right-0 mt-2 w-44 max-h-80 overflow-y-auto rounded-2xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 shadow-xl py-1.5 z-50 animate-fadeIn divide-y divide-stone-100 dark:divide-stone-750">
                 {languages.map((l) => (
                   <button
                     key={l.code}
@@ -222,6 +222,33 @@ export default function Header() {
               </span>
             )}
           </Link>
+
+          {/* Mobile Local Indian Languages */}
+          <div className="pt-2 border-t border-stone-200 dark:border-stone-800">
+            <span className="text-[11px] font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider block mb-2">
+              Choose Indian Language:
+            </span>
+            <div className="grid grid-cols-2 gap-1.5">
+              {languages.map((l) => (
+                <button
+                  key={l.code}
+                  type="button"
+                  onClick={() => {
+                    changeLanguage(l.code);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium text-left transition-colors flex items-center justify-between ${
+                    language === l.code
+                      ? 'bg-terracotta-600 text-white font-bold'
+                      : 'bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700'
+                  }`}
+                >
+                  <span>{l.native}</span>
+                  <span className="text-[10px] opacity-70 uppercase">{l.code}</span>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </header>

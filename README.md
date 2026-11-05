@@ -40,12 +40,17 @@ Mass-market tourism channels crowds into the same 3–4 famous checkpoints in ev
 4. **Ask-the-Guide Interactive Chat**:
    - Ask real-time questions about night safety, budgeting, dietary preferences, or transit directly below the itinerary with full itinerary context.
 
-5. **Save & Share**:
+5. **Local Indian Languages & Dark Mode**:
+   - **8 Local Indian Languages**: 1-click toggle across English, हिन्दी (Hindi), मराठी (Marathi), বাংলা (Bengali), தமிழ் (Tamil), తెలుగు (Telugu), ગુજરાતી (Gujarati), and ಕನ್ನಡ (Kannada).
+   - Generates culturally grounded responses directly in regional Indian scripts via Gemini 2.5 Flash.
+   - **Full Dark Mode**: Automatic system preference detection and 1-click toggle with persistent localStorage.
+
+6. **Save & Share**:
    - Save trips to `localStorage` ("My Trips" page).
    - Print & PDF download with dedicated `@media print` clean stylesheet.
    - 1-click clipboard summary export for WhatsApp and notes.
 
-6. **Quick-Start Preset Chips**:
+7. **Quick-Start Preset Chips**:
    - 1-click presets for judges: Varanasi (Dawn Ghats & Silk Weavers), Pondicherry (Franco-Tamil Quarters), Jaipur (Secret Stepwells), Fort Kochi (Spice Guilds), and Dharamsala (Cedar Monasteries).
 
 ---

@@ -24,7 +24,7 @@ export function AppProvider({ children }) {
 
     // Initialize Language
     const savedLang = localStorage.getItem('musafir_lang');
-    if (savedLang && ['en', 'hi', 'bn', 'ta', 'fr', 'es'].includes(savedLang)) {
+    if (savedLang && ['en', 'hi', 'mr', 'bn', 'ta', 'te', 'gu', 'kn'].includes(savedLang)) {
       setLanguage(savedLang);
     }
   }, []);
