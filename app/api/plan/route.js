@@ -14,6 +14,7 @@ export async function POST(request) {
       interests = [],
       groupType = "Solo",
       preferHiddenGems = true,
+      language = "en",
     } = body;
 
     if (!destination || typeof destination !== 'string' || destination.trim().length === 0) {
@@ -30,6 +31,7 @@ export async function POST(request) {
       interests,
       groupType,
       preferHiddenGems,
+      language,
     });
 
     return NextResponse.json(plan, { status: 200 });

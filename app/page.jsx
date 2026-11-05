@@ -1,15 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Hero from '@/components/Hero';
 import QuickStartChips from '@/components/QuickStartChips';
 import PlannerForm from '@/components/PlannerForm';
 import HowItWorks from '@/components/HowItWorks';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import ItineraryView from '@/components/ItineraryView';
-import { AlertCircle, RefreshCw, Compass } from 'lucide-react';
+import { AlertCircle, RefreshCw } from 'lucide-react';
+import { useApp } from '@/context/AppContext';
 
 export default function HomePage() {
+  const { language } = useApp();
   const [formData, setFormData] = useState({
     destination: '',
     duration: '1 Day',
@@ -23,8 +25,29 @@ export default function HomePage() {
   const [itinerary, setItinerary] = useState(null);
   const [error, setError] = useState(null);
 
+  // Listen for navigation requests from the Header menu bar
+  useEffect(() => {
+    const handleOpenPlanner = () => {
+      setItinerary(null);
+      setError(null);
+      setTimeout(() => {
+        const el = document.getElementById('planner-section');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    };
+
+    window.addEventListener('openPlanner', handleOpenPlanner);
+    return () => window.removeEventListener('openPlanner', handleOpenPlanner);
+  }, []);
+
   const handlePlanTrip = async (dataToSubmit) => {
-    const payload = dataToSubmit || formData;
+    const payload = {
+      ...(dataToSubmit || formData),
+      language: language || 'en'
+    };
+
     if (!payload.destination || !payload.destination.trim()) return;
 
     setIsLoading(true);
@@ -77,7 +100,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="pb-16">
+    <div className="pb-16 bg-sand-50 dark:bg-stone-950 transition-colors duration-200">
       {!itinerary && !isLoading && (
         <>
           <Hero />
@@ -88,12 +111,12 @@ export default function HomePage() {
       {/* Error Banner */}
       {error && (
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-          <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-900 flex items-start justify-between gap-3 shadow-xs">
+          <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 text-red-900 dark:text-red-200 flex items-start justify-between gap-3 shadow-xs">
             <div className="flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
               <div>
                 <h4 className="font-bold text-sm">Unable to generate itinerary</h4>
-                <p className="text-xs text-red-700 mt-0.5">{error}</p>
+                <p className="text-xs text-red-700 dark:text-red-300 mt-0.5">{error}</p>
               </div>
             </div>
             <button
@@ -117,7 +140,7 @@ export default function HomePage() {
         <ItineraryView itinerary={itinerary} onReset={handleReset} />
       )}
 
-      {/* Planner Form & How It Works (shown when no active itinerary) */}
+      {/* Planner Form & How It Works */}
       {!itinerary && !isLoading && (
         <>
           <PlannerForm

@@ -15,8 +15,10 @@ import {
   Eye,
   Plus
 } from 'lucide-react';
+import { useApp } from '@/context/AppContext';
 
 export default function MyTripsPage() {
+  const { t } = useApp();
   const [savedTrips, setSavedTrips] = useState([]);
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [isClient, setIsClient] = useState(false);
@@ -40,7 +42,7 @@ export default function MyTripsPage() {
 
   if (!isClient) {
     return (
-      <div className="max-w-5xl mx-auto px-4 py-16 text-center text-stone-500">
+      <div className="max-w-5xl mx-auto px-4 py-16 text-center text-stone-500 dark:text-stone-400">
         Loading saved trips...
       </div>
     );
@@ -49,13 +51,13 @@ export default function MyTripsPage() {
   // If a saved trip is clicked to view
   if (selectedTrip) {
     return (
-      <div className="py-6">
+      <div className="py-6 bg-sand-50 dark:bg-stone-950 min-h-[calc(100vh-4rem)] transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 no-print">
           <button
             onClick={() => setSelectedTrip(null)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors"
           >
-            <ArrowLeft className="w-3.5 h-3.5 text-terracotta-600" />
+            <ArrowLeft className="w-3.5 h-3.5 text-terracotta-600 dark:text-terracotta-400" />
             <span>Back to All Saved Trips</span>
           </button>
         </div>
@@ -65,17 +67,17 @@ export default function MyTripsPage() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-[calc(100vh-4rem)] bg-sand-50 dark:bg-stone-950 transition-colors">
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-stone-200 mb-8">
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-stone-200 dark:border-stone-800 mb-8">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <Bookmark className="w-5 h-5 text-terracotta-600" />
-            <h1 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
-              My Saved Trips
+            <Bookmark className="w-5 h-5 text-terracotta-600 dark:text-terracotta-400" />
+            <h1 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900 dark:text-white">
+              {t.myTrips}
             </h1>
           </div>
-          <p className="text-xs sm:text-sm text-stone-600">
+          <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
             Itineraries and cultural guides stored locally in your browser.
           </p>
         </div>
@@ -91,14 +93,14 @@ export default function MyTripsPage() {
 
       {/* Empty State */}
       {savedTrips.length === 0 ? (
-        <div className="p-12 text-center rounded-3xl bg-white border border-stone-200 shadow-sm max-w-xl mx-auto my-8">
-          <div className="w-16 h-16 mx-auto rounded-2xl bg-terracotta-50 text-terracotta-600 flex items-center justify-center mb-4">
+        <div className="p-12 text-center rounded-3xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm max-w-xl mx-auto my-8">
+          <div className="w-16 h-16 mx-auto rounded-2xl bg-terracotta-50 dark:bg-terracotta-900/40 text-terracotta-600 dark:text-terracotta-400 flex items-center justify-center mb-4">
             <Compass className="w-8 h-8" />
           </div>
-          <h2 className="font-serif text-xl font-bold text-stone-900">
+          <h2 className="font-serif text-xl font-bold text-stone-900 dark:text-white">
             No saved itineraries yet
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed max-w-md mx-auto">
+          <p className="mt-2 text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-md mx-auto">
             Explore a destination, discover hidden local lore, and tap "Save Itinerary" to keep your journey accessible offline!
           </p>
           <div className="mt-6">
@@ -118,35 +120,35 @@ export default function MyTripsPage() {
             <div
               key={trip.id}
               onClick={() => setSelectedTrip(trip)}
-              className="group bg-white rounded-3xl p-6 border border-stone-200 hover:border-terracotta-400 cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md flex flex-col justify-between"
+              className="group bg-white dark:bg-stone-900 rounded-3xl p-6 border border-stone-200 dark:border-stone-800 hover:border-terracotta-400 dark:hover:border-terracotta-500 cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-3">
-                  <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-terracotta-50 text-terracotta-800">
-                    <MapPin className="w-3 h-3 text-terracotta-600" />
+                  <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-terracotta-50 dark:bg-terracotta-900/40 text-terracotta-800 dark:text-terracotta-300 border border-terracotta-200 dark:border-terracotta-800">
+                    <MapPin className="w-3 h-3 text-terracotta-600 dark:text-terracotta-400" />
                     {trip.destination}
                   </span>
 
                   <button
                     type="button"
                     onClick={(e) => handleDelete(trip.id, e)}
-                    className="p-1.5 rounded-lg text-stone-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                    className="p-1.5 rounded-lg text-stone-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
                     title="Remove saved itinerary"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
 
-                <h3 className="font-serif text-lg font-bold text-stone-900 group-hover:text-terracotta-700 transition-colors leading-snug">
+                <h3 className="font-serif text-lg font-bold text-stone-900 dark:text-white group-hover:text-terracotta-700 dark:group-hover:text-terracotta-400 transition-colors leading-snug">
                   {trip.title}
                 </h3>
 
-                <p className="mt-2 text-xs text-stone-600 line-clamp-2 leading-relaxed">
+                <p className="mt-2 text-xs text-stone-600 dark:text-stone-400 line-clamp-2 leading-relaxed">
                   {trip.intro || trip.tagline}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+              <div className="mt-6 pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
                 <div className="flex items-center gap-3">
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5 text-stone-400" />
@@ -156,7 +158,7 @@ export default function MyTripsPage() {
                   <span>{trip.stops?.length || 0} stops</span>
                 </div>
 
-                <span className="font-semibold text-terracotta-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                <span className="font-semibold text-terracotta-600 dark:text-terracotta-400 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                   <span>View</span>
                   <Eye className="w-3.5 h-3.5" />
                 </span>
